@@ -48,7 +48,7 @@ function resetInputValues() {
 }
 
 function getUsers() {
-  let transReq = db.transaction("users", "readonly");
+  let transReq = createTx("users", "readonly");
   let transStore = transReq.objectStore("users");
   let transAdd = transStore.getAll();
 
@@ -59,4 +59,10 @@ function getUsers() {
       console.log(user);
     });
   });
+}
+
+function createTx(storeName, mode) {
+  let tx = db.transaction(storeName, mode);
+
+  return tx;
 }
