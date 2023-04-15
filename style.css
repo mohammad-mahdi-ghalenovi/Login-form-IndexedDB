@@ -7,17 +7,125 @@
   font-family: "Raleway";
 }
 
+body {
+  background: #111;
+}
+
 .signup-container {
+  display: grid;
+  grid-template-columns: 330px 1fr;
+  grid-template-rows: 120px 170px 1fr 20px;
+  position: relative;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(50%);
+  height: 400px;
+  width: 700px;
+  background-color: white;
+  border-radius: 0.3rem;
+  box-shadow: #48ca90 0px 25px 50px -12px;
 }
+
+.signup-cover {
+  grid-row: 1/-1;
+  position: relative;
+  grid-column: 1/2;
+  background: black;
+  background-position: center;
+  background-size: cover;
+  background-image: url(img/pexels-benjamin-suter-3617500.jpg);
+}
+
+.signup-title {
+  position: relative;
+  margin-top: 1rem;
+  padding: 20px;
+}
+
+.signup-title p {
+  padding-top: 0.6rem;
+  font-size: 10px;
+  max-width: 152px;
+}
+
 .signup__form {
+  grid-column: 2/3;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  align-items: end;
+  justify-content: center;
 }
+
+.input-containers {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 0.3rem 0;
+}
+
+.input-containers i img {
+  position: relative;
+  scale: 0.7;
+  margin-top: 0.8rem;
+}
+
+.input-containers input {
+  width: 70%;
+  margin-left: 0.3rem;
+  padding: 0.5rem 0.3rem;
+  background: transparent;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid rgb(159, 155, 155);
+  color: black;
+  transition: 0.4s;
+}
+
+.input-containers input:focus {
+  border-color: #48ca90;
+}
+
+.input-containers input::placeholder {
+  color: black;
+}
+
+.submit-input {
+  margin-top: 12px;
+  margin-right: 22px;
+  color: white;
+  background-color: #48ca90;
+  padding: 0.6rem 1.5rem;
+  border: none;
+  font-size: 12px;
+  border-radius: 0.9rem;
+  transition: 0.4s;
+  cursor: pointer;
+  z-index: 99;
+}
+
+.submit-input:hover {
+  background-color: #55a681;
+}
+
 .name-input {
 }
 .password-input {
 }
 .email-input {
 }
-.submit-input {
-}
+
 .help-container {
+  grid-column: 2/3;
+  display: flex;
+  justify-content: end;
+  align-items: end;
+  padding-right: 0.4rem;
+  flex-direction: column;
+  font-size: 10px;
+}
+
+.help-container a {
+  color: #48ca90;
+  margin: 0.2rem;
 }

@@ -5,26 +5,40 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Welcome</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-
     <section class="signup-container">
+      <div class="signup-cover">
+      </div>
+
+      <div class="signup-title">
+        <h3>Im Am Metti</h3>
+        <p>Welcome to our business ! Don't waste time just get Sign Up</p>
+      </div>
+
       <form class="signup__form">
-        <input type="text" class="name-input" placeholder="Name" />
+        <div class="input-containers">
+          <i><img src="img/name.png" alt=""></i>
+          <input type="text" class="name-input" placeholder="Name" />
+        </div>
 
-        <input type="text" class="password-input" placeholder="Password" />
+        <div class="input-containers">
+          <i><img src="img/lock.png" alt=""></i>
+          <input type="text" class="password-input" placeholder="Password" />
+        </div>
 
-        <input type="text" class="email-input" placeholder="Email" />
-
-        <input type="submit" value="Submit" class="submit-input" />
+        <div class="input-containers">
+          <i><img src="img/email.png" alt=""></i>
+          <input type="text" class="email-input" placeholder="Email" />
+        </div>
+        <input type="submit" value="SignUp" class="submit-input" />
       </form>
 
       <div class="help-container">
-          <a href="#">Forget Password</a>
-          <a href="#">Already have an account ? Login</a>
+        <a href="#">Forget Password</a>
+        <a href="#">Already have an account ? </a>
       </div>
-
     </section>
 
     <script src="app.js"></script>
