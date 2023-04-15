@@ -17,8 +17,8 @@ body {
   grid-template-rows: 120px 170px 1fr 20px;
   position: relative;
   left: 50%;
-  top: 50%;
-  transform: translateX(-50%) translateY(50%);
+  top: 100px;
+  transform: translateX(-50%);
   height: 400px;
   width: 700px;
   background-color: white;
