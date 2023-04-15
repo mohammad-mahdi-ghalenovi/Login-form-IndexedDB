@@ -32,4 +32,16 @@ formElem.addEventListener("submit", (e) => {
     password: passwordInput.value,
     email: emailInput.value,
   };
+
+  let transReq = db.transaction("users", "readwrite");
+  let transStore = transReq.objectStore("users");
+  transStore.add(newUser);
+
+  resetInputValues();
 });
+
+function resetInputValues() {
+  nameInput.value = "";
+  passwordInput.value = "";
+  emailInput.value = "";
+}
