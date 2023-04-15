@@ -5,20 +5,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Welcome</title>
+    <link rel="stylesheet" href="style.css">
   </head>
   <body>
 
-    <form>
+    <section class="signup-container">
+      <form class="signup__form">
+        <input type="text" class="name-input" placeholder="Name" />
 
-      <input type="text" class="name-input"  placeholder="Name"/>
+        <input type="text" class="password-input" placeholder="Password" />
 
-      <input type="text" class="password-input"  placeholder="Password"/>
-  
-      <input type="text" class="email-input"  placeholder="Email"/>
-  
-      <input type="submit" value="Submit it" />
-  
-    </form>
+        <input type="text" class="email-input" placeholder="Email" />
+
+        <input type="submit" value="Submit" class="submit-input" />
+      </form>
+
+      <div class="help-container">
+          <a href="#">Forget Password</a>
+          <a href="#">Already have an account ? Login</a>
+      </div>
+
+    </section>
 
     <script src="app.js"></script>
   </body>
