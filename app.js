@@ -1,14 +1,15 @@
 let db;
-let formElem = document.querySelector("form");
-let nameInput = document.querySelector(".name-input");
-let passwordInput = document.querySelector(".password-input");
-let emailInput = document.querySelector(".email-input");
+const formElem = document.querySelector("form");
+const nameInput = document.querySelector(".name-input");
+const passwordInput = document.querySelector(".password-input");
+const emailInput = document.querySelector(".email-input");
 
 window.addEventListener("load", () => {
   let openDB = indexedDB.open("MettiPedia", 1);
 
   openDB.addEventListener("success", (e) => {
     db = e.target.result;
+    getUsers();
     console.warn("succesFully installed :_)");
   });
 
@@ -35,7 +36,7 @@ formElem.addEventListener("submit", (e) => {
 
   let transReq = db.transaction("users", "readwrite");
   let transStore = transReq.objectStore("users");
-  transStore.add(newUser);
+  let transAdd = transStore.add(newUser);
 
   resetInputValues();
 });
@@ -44,4 +45,18 @@ function resetInputValues() {
   nameInput.value = "";
   passwordInput.value = "";
   emailInput.value = "";
+}
+
+function getUsers() {
+  let transReq = db.transaction("users", "readonly");
+  let transStore = transReq.objectStore("users");
+  let transAdd = transStore.getAll();
+
+  transAdd.addEventListener("success", (e) => {
+    let tableUsersArray = e.target.result;
+
+    tableUsersArray.map((user) => {
+      console.log(user);
+    });
+  });
 }
