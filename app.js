@@ -22,3 +22,14 @@ window.addEventListener("load", () => {
     }
   });
 });
+
+formElem.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  let newUser = {
+    userID: Math.floor(Math.random() * 100),
+    name: nameInput.value,
+    password: passwordInput.value,
+    email: emailInput.value,
+  };
+});
