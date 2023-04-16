@@ -1,14 +1,16 @@
 let db;
-let formElem = document.querySelector("form");
-let nameInput = document.querySelector(".name-input");
-let passwordInput = document.querySelector(".password-input");
-let emailInput = document.querySelector(".email-input");
+const formElem = document.querySelector("form");
+const nameInput = document.querySelector(".name-input");
+const passwordInput = document.querySelector(".password-input");
+const emailInput = document.querySelector(".email-input");
+const tableContainerElem = document.querySelector("table");
 
 window.addEventListener("load", () => {
   let openDB = indexedDB.open("MettiPedia", 1);
 
   openDB.addEventListener("success", (e) => {
     db = e.target.result;
+    getUsers();
     console.warn("succesFully installed :_)");
   });
 
@@ -35,13 +37,50 @@ formElem.addEventListener("submit", (e) => {
 
   let transReq = db.transaction("users", "readwrite");
   let transStore = transReq.objectStore("users");
-  transStore.add(newUser);
+  let transAdd = transStore.add(newUser);
 
   resetInputValues();
+  getUsers();
 });
 
 function resetInputValues() {
   nameInput.value = "";
   passwordInput.value = "";
   emailInput.value = "";
+}
+
+function getUsers() {
+  let transReq = createTx("users", "readonly");
+  let transStore = transReq.objectStore("users");
+  let transAdd = transStore.getAll();
+
+  transAdd.addEventListener("success", (e) => {
+    let tableUsersArray = e.target.result;
+
+    tableContainerElem.innerHTML = "";
+    
+    tableUsersArray.map((user) => {
+      tableContainerElem.innerHTML += `
+      <tr>${user.userID}</tr>
+      <tr>${user.name}</tr>
+      <a href="#" onclick="deleteTargetUser(${user.userID})">Remove</a>
+      `;
+    });
+  });
+}
+
+function deleteTargetUser(userID) {
+  event.preventDefault();
+
+  let tx = createTx("users", "readwrite");
+  let store = tx.objectStore("users");
+  let request = store.delete(userID);
+
+  getUsers();
+}
+
+function createTx(storeName, mode) {
+  let tx = db.transaction(storeName, mode);
+
+  return tx;
 }
