@@ -3,6 +3,7 @@ const formElem = document.querySelector("form");
 const nameInput = document.querySelector(".name-input");
 const passwordInput = document.querySelector(".password-input");
 const emailInput = document.querySelector(".email-input");
+const tableContainerElem = document.querySelector("table");
 
 window.addEventListener("load", () => {
   let openDB = indexedDB.open("MettiPedia", 1);
@@ -56,9 +57,18 @@ function getUsers() {
     let tableUsersArray = e.target.result;
 
     tableUsersArray.map((user) => {
-      console.log(user);
+      tableContainerElem.innerHTML += `
+      <tr>${user.userID}</tr>
+      <tr>${user.name}</tr>
+      <a href="#" onclick="deleteTargetUser(${user.userID})">Remove</a>
+      `;
     });
   });
+}
+
+function deleteTargetUser(userID) {
+  event.preventDefault();
+  console.log(userID);
 }
 
 function createTx(storeName, mode) {

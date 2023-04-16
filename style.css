@@ -33,7 +33,7 @@ body {
   background: black;
   background-position: center;
   background-size: cover;
-  background-image: url(img/pexels-benjamin-suter-3617500.jpg);
+  /* background-image: url(img/pexels-benjamin-suter-3617500.jpg); */
 }
 
 .signup-title {
