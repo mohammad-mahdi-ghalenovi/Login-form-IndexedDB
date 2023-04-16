@@ -40,6 +40,7 @@ formElem.addEventListener("submit", (e) => {
   let transAdd = transStore.add(newUser);
 
   resetInputValues();
+  getUsers();
 });
 
 function resetInputValues() {
@@ -56,6 +57,8 @@ function getUsers() {
   transAdd.addEventListener("success", (e) => {
     let tableUsersArray = e.target.result;
 
+    tableContainerElem.innerHTML = "";
+    
     tableUsersArray.map((user) => {
       tableContainerElem.innerHTML += `
       <tr>${user.userID}</tr>
@@ -68,7 +71,12 @@ function getUsers() {
 
 function deleteTargetUser(userID) {
   event.preventDefault();
-  console.log(userID);
+
+  let tx = createTx("users", "readwrite");
+  let store = tx.objectStore("users");
+  let request = store.delete(userID);
+
+  getUsers();
 }
 
 function createTx(storeName, mode) {
