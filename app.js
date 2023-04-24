@@ -25,11 +25,14 @@ window.addEventListener("load", () => {
   });
 });
 
+let i = 0;
 formElem.addEventListener("submit", (e) => {
   e.preventDefault();
 
+  i++;
+
   let newUser = {
-    userID: Math.floor(Math.random() * 100),
+    userID: i,
     name: nameInput.value,
     password: passwordInput.value,
     email: emailInput.value,
@@ -80,6 +83,8 @@ function deleteTargetUser(userID) {
   let store = tx.objectStore("users");
   let request = store.delete(userID);
 
+  i--;
+
   getUsers();
 }
 
@@ -89,9 +94,9 @@ function createTx(storeName, mode) {
   return tx;
 }
 
-// menu toggle 
-document.body.addEventListener("keyup" , function (e) {
-  if(e.key === "Control") {
-    document.querySelector(".user-container").classList.toggle("active")
+// menu toggle
+document.body.addEventListener("keyup", function (e) {
+  if (e.key === "Control") {
+    document.querySelector(".user-container").classList.toggle("active");
   }
-})
+});
