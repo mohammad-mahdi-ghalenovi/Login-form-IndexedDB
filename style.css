@@ -9,6 +9,15 @@
 
 body {
   background: #111;
+  overflow-x: hidden;
+}
+
+.main-title{
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  color: #48ca90;
+  transform: translate(-50%);
 }
 
 .signup-container {
@@ -128,4 +137,51 @@ body {
 .help-container a {
   color: #48ca90;
   margin: 0.2rem;
+}
+
+/* users container */
+.user-container {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  right: 0;
+  top: 0;
+  background-color: #111;
+  color: white;
+  height: 100vh;
+  min-width: 300px;
+  align-items: center;
+  padding: 2rem 3rem;
+  box-shadow: rgba(86, 186, 93, 0.4) 0px 0px 0px 2px,
+    rgba(90, 223, 90, 0.65) 0px 4px 6px -1px,
+    rgba(47, 193, 18, 0.08) 0px 1px 0px inset;
+  transform: translateX(100%);
+  transition: 0.4s ease-in-out;
+}
+
+.user-container table th {
+  padding: 0 1rem;
+}
+
+.tr-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tr-container .tr-wrapper {
+  display: flex;
+  color: white;
+  text-decoration: none;
+  margin: 2rem;
+  padding: 0 1rem;
+}
+
+.tr-container .tr-wrapper p {
+  padding: 0 1rem;
+}
+
+.active {
+  transform: translateX(0);
 }

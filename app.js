@@ -3,7 +3,7 @@ const formElem = document.querySelector("form");
 const nameInput = document.querySelector(".name-input");
 const passwordInput = document.querySelector(".password-input");
 const emailInput = document.querySelector(".email-input");
-const tableContainerElem = document.querySelector("table");
+const tableContainerElem = document.querySelector(".tr-container");
 
 window.addEventListener("load", () => {
   let openDB = indexedDB.open("MettiPedia", 1);
@@ -25,17 +25,20 @@ window.addEventListener("load", () => {
   });
 });
 
+let i = 0;
 formElem.addEventListener("submit", (e) => {
   e.preventDefault();
 
+  i++;
+
   let newUser = {
-    userID: Math.floor(Math.random() * 100),
+    userID: i,
     name: nameInput.value,
     password: passwordInput.value,
     email: emailInput.value,
   };
 
-  let transReq = db.transaction("users", "readwrite");
+  let transReq = createTx("users", "readwrite");
   let transStore = transReq.objectStore("users");
   let transAdd = transStore.add(newUser);
 
@@ -58,12 +61,16 @@ function getUsers() {
     let tableUsersArray = e.target.result;
 
     tableContainerElem.innerHTML = "";
-    
+
     tableUsersArray.map((user) => {
       tableContainerElem.innerHTML += `
-      <tr>${user.userID}</tr>
-      <tr>${user.name}</tr>
-      <a href="#" onclick="deleteTargetUser(${user.userID})">Remove</a>
+      <div class="tr-wrapper">
+            <p>${user.userID}</p>
+            <p>${user.name}</p>
+            <p>${user.password}</p>
+            <p>${user.email}</p>
+            <a href="#" onclick="deleteTargetUser(${user.userID})">Remove</a>
+      </div>
       `;
     });
   });
@@ -76,6 +83,8 @@ function deleteTargetUser(userID) {
   let store = tx.objectStore("users");
   let request = store.delete(userID);
 
+  i--;
+
   getUsers();
 }
 
@@ -84,3 +93,10 @@ function createTx(storeName, mode) {
 
   return tx;
 }
+
+// menu toggle
+document.body.addEventListener("keyup", function (e) {
+  if (e.key === "Control") {
+    document.querySelector(".user-container").classList.toggle("active");
+  }
+});

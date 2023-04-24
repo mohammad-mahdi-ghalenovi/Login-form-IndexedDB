@@ -8,9 +8,13 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+
+    <h class="main-title">
+        Press Ctrl to see users list
+    </h>
+    
     <section class="signup-container">
-      <div class="signup-cover">
-      </div>
+      <div class="signup-cover"></div>
 
       <div class="signup-title">
         <h3>I Am Metti</h3>
@@ -19,17 +23,21 @@
 
       <form class="signup__form">
         <div class="input-containers">
-          <i><img src="img/name.png" alt=""></i>
+          <i><img src="img/name.png" alt="" /></i>
           <input type="text" class="name-input" placeholder="Name" />
         </div>
 
         <div class="input-containers">
-          <i><img src="img/lock.png" alt=""></i>
-          <input type="password" class="password-input" placeholder="Password" />
+          <i><img src="img/lock.png" alt="" /></i>
+          <input
+            type="password"
+            class="password-input"
+            placeholder="Password"
+          />
         </div>
 
         <div class="input-containers">
-          <i><img src="img/email.png" alt=""></i>
+          <i><img src="img/email.png" alt="" /></i>
           <input type="text" class="email-input" placeholder="Email" />
         </div>
         <input type="submit" value="SignUp" class="submit-input" />
@@ -42,9 +50,15 @@
     </section>
 
     <section class="user-container">
-        <table style="color: white;">
+      <table>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Password</th>
+        <th>Email</th>
+      </table>
+      <section class="tr-container">
 
-        </table>
+      </section>
     </section>
 
     <script src="app.js"></script>
